@@ -1,0 +1,11 @@
+The line const userData = createUserSchema.parse(req.body); is used for validation using Zod. Here's what's happening:
+
+createUserSchema is a schema defined using Zod that specifies the structure and validation rules for the data you expect in the request body. In this case, it defines what a valid user object should look like.
+
+req.body contains the data submitted in the HTTP request's body, typically as part of a POST request when a user is signing up. This data includes username, email, and password.
+
+By calling createUserSchema.parse(req.body), you are using the Zod schema to validate the req.body data against the rules defined in createUserSchema. If the data in req.body conforms to the schema (i.e., it meets the specified structure and validation rules), userData will contain the parsed and validated data.
+
+If the data in req.body doesn't conform to the schema (e.g., it's missing required fields, or the fields have the wrong types), Zod will throw an error. You can catch this error in the try-catch block and handle it by returning an appropriate response, such as a 400 status code and an error message, indicating that the data provided by the client is invalid.
+
+In summary, createUserSchema.parse(req.body) is a way to ensure that the data sent by the client adheres to the expected structure and validation rules, and it provides a convenient way to validate and extract the data for further processing, such as creating a new user in your database.
